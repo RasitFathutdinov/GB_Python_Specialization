@@ -60,5 +60,39 @@ while count_of_repeat > 0:
     count_of_repeat -= 1
     pos_end += 4
     pos_begin += 4
-    # преобразование четыёрок в 16 с/с
+    # преобразование четвёрок в 16 с/с
+    match temp_str:
+        case '0000':                                  # 0
+            number_base_16 = number_base_16 + '0'                    
+        case '0001':                                  # 1
+            number_base_16 = number_base_16 + '1'
+        case '0010':                                  # 2
+            number_base_16 = number_base_16 + '2'
+        case '0011':                                  # 3
+            number_base_16 = number_base_16 + '3'
+        case '0100':                                  # 4
+            number_base_16 = number_base_16 + '4'
+        case '0101':                                  # 5
+            number_base_16 = number_base_16 + '5'
+        case '0110':                                  # 6
+            number_base_16 = number_base_16 + '6'
+        case '0111':                                  # 7
+            number_base_16 = number_base_16 + '7'
+        case '1000':                                  # 8
+            number_base_16 = number_base_16 + '8'
+        case '1001':                                  # 9
+            number_base_16 = number_base_16 + '9'
+        case '1010':                                  # A (10)
+            number_base_16 = number_base_16 + 'A'
+        case '1011':                                  # B (11)
+            number_base_16 = number_base_16 + 'B'
+        case '1100':                                  # C (12)
+            number_base_16 = number_base_16 + 'C'
+        case '1101':                                  # D (13)
+            number_base_16 = number_base_16 + 'D'
+        case '1110':                                  # E (14)
+            number_base_16 = number_base_16 + 'E'
+        case '1111':                                  # F (15)
+            number_base_16 = number_base_16 + 'F'
 
+print(f'{NUMBER_BASE_10} -> {number_base_02} -> {number_base_16}')
