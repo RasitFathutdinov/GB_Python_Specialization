@@ -104,7 +104,9 @@ if __name__ == '__main__':
     factory_dog = FactoryOfAnimals("Dog","Рэкс", 40, 5, "Такса")
     factory_bird = FactoryOfAnimals("Bird", "Гоша", 1, 3, "Попугай")
     factory_fish = FactoryOfAnimals("Fish", "Карп", 10, 5, "Речной")
+    factory_snake = FactoryOfAnimals("Snake", "Змея", 10, 5, "Уж")
 
     print(factory_dog)
     print(factory_bird)
     print(factory_fish)
+    print(factory_snake)
