@@ -79,16 +79,16 @@ class FactoryOfAnimals:
     def __init__(self, animal_kind: str, name: str, weight: int, age: int, animal_type: str):
         match animal_kind:
             case "Bird":
-                animal = Bird(name, weight, age, animal_type, "Чирик")
+                self.animal = Bird(name, weight, age, animal_type, "Чирик")
             case "Dog":
-                animal = Dog(name, weight, age, animal_type)
+                self.animal = Dog(name, weight, age, animal_type)
             case "Fish":
-                animal = Fish(name, weight, age, animal_type)
+                self.animal = Fish(name, weight, age, animal_type)
             case _:
-                animal = Animal(name, weight, age)
+                self.animal = Animal(name, weight, age)
 
     def __str__(self):
-        return f"{super().__str__()} {self.animal}"
+        return f"{super().__str__()} {type(self.animal)}"
 
 
 
