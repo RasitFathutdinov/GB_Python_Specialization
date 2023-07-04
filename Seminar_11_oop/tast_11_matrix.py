@@ -84,7 +84,7 @@ class UserMatrix:
 
     def __eq__(self, other) -> bool:
         '''
-            Переопределенный дандер метод сложения двух матриц
+            Переопределенный дандер метод сравнения двух матриц
         '''
         result = True
 
@@ -123,7 +123,8 @@ class UserMatrix:
                     #     j = 1:1:p;  
                     #     k = 1:1:n;  
                     # A[mxn] * B[nxp] = C[mxp]
-        return result        
+        return result  
+          
     def __str__(self):
         '''
             Переопределенный дандер метод в преобразования в строку экземпляра класса
@@ -180,3 +181,5 @@ if __name__ == '__main__':
     print()
     print("Результат сравнения матриц: matrix_06 = matrix_01 -> ", end = '')
     print(f"{matrix_06.__eq__(matrix_01)}\n")
+    print("Результат сравнения матриц: matrix_06 = matrix_01 -> ", end = '')
+    print(f"{matrix_06 == matrix_01}\n")
