@@ -1,214 +1,142 @@
-"""
-    Класс Матрица. 
-    Методы для:
-        вывода на печать,
-        сравнения,
-        сложения,
-        *умножения матриц
-"""
+'''
+    Тестирование черз doctest методов для
+        - транспорирования матрицы
+        - преобразования матрицы в строку
+'''
 
-import string
 import doctest
+import string
 
-def remove_chars(text: str) -> str:
-    '''
-    text
-    >>> remove_chars('dddddd dddd')
-    'dddddd dddd'
-    >>> remove_chars('AAA AA')
-    'aaa aa'
-    >>> remove_chars('a,a,n: v.v;')
-    'aan vv'
-    >>> remove_chars('БВАОПоаоваов')
-    ''
-    >>> remove_chars('WWW,3322,ГГ:')
-    'www'
-    '''
-    alpha = string.ascii_letters + ' '
-    result = text
-    for t in text:
-        if t not in alpha:
-            result = result.replace(t, '')
-    return result.lower()
+# # 1. Напишите функцию для транспонирования матрицы
+# def matrix_input (m_rows : int = 2, n_columns : int = 2) -> list:
+#     result = [0.0 for x in range(0, m_rows * n_columns)]
+#     for i in range(0, m_rows):
+#         for j in range(0, n_columns):
+#             result[i * n_columns + j] = input(f'Введите элемент [{i + 1}][{j + 1}] и нажмите enter: ')
+#     return result
+
+# def matrix_output (m_rows: int, n_columns : int, matrix_to_output : list):
+#     for i in range(0, m_rows):
+#         for j in range(0, n_columns):
+#             print(f'{matrix_to_output[i * n_columns + j]} ', end = '')
+#         print()
+
+# def matrix_transp(m_rows: int, n_columns : int, matrix_gived : list) -> list:
+#     '''
+#     text
+#     >>> matrix_transp(2, 3, [1, 2, 3, 4, 5, 6])
+#     [1, 4, 2, 5, 3, 6]
+#     >>> matrix_transp(2, 3, [6, 5, 4, 3, 2, 1])
+#     [1, 2, 3, 4, 5, 6]
+#     '''
+#     result = [0.0 for x in range(0, m_rows * n_columns)]
+#     for i in range(0, m_rows):
+#         for j in range(0, n_columns):
+#             result [j * m_rows + i] = matrix_gived[i * n_columns + j]
+#     return result
+
+# def matrix_to_string (m_rows: int, n_columns : int, matrix_to_str : list) -> string:
+#     '''
+#     text
+#     >>> matrix_to_string(2, 3, [1, 2, 3, 4, 5, 6])
+#     '[\\n1, 2, 3\\n4, 5, 6\\n]'
+#     >>> matrix_to_string(2, 3, [1, 2, 3, 4, 5, 6])
+#     1, 2, 3, 4, 5, 6
+#     '''
+#     list_of_rows = ['[']
+#     for i in range(0, m_rows):
+#         list_of_rows.append(str(matrix_to_str[i * n_columns : (i+1) * n_columns]).strip('[]'))
+
+#     list_of_rows.append(']')
+#     result = '\n'.join(list_of_rows)
+#     return result
 
 
 if __name__ == '__main__':
-    # print(remove_chars('sDDsdsd вывывывывы  выввы1323232'))
     doctest.testmod(verbose=True)
 
+    # # тест "1" - успешный 
+    # my_matrix = [1, 2, 3, 4, 5, 6]
+    # my_matrix_transp = matrix_transp(2, 3, my_matrix)
+    # print(f'Исходная матрица')
+    # print(f'{my_matrix}')
+    # matrix_output(2, 3, my_matrix)
+    # print(f'Транспорированная матрица')
+    # print(f'{my_matrix_transp}')
+    # matrix_output(3, 2, my_matrix_transp)
 
-class UserMatrix:
-    def __init__(self, rows: int = 2, columns: int = 2, trigger : int = 1):
-        """
-        Конструктор - инициализация экземпляра класса
-            триггер = 0 - создание нулевой марицы (матрицы размерности m х n, заполненной нулями)
-            триггер = 1 - автозаполнение значениями от 1 до m х n (матрицы размерности m х n, заполненной нулями)
-            триггер = 2 - ввод матрицы пользователем (матрицы размерности m х n, заполненной нулями)
-            Примечание. Можно доработать через передачу списка (массива)
-                        А также передачу другого экземпляра класса
-        """
-        self.rows = rows            # m - count of rows
-        self.columns = columns      # n - count of columns
-        match trigger:
-            case 0:
-                self.user_matrix = [0 for x in range(0, rows * columns)]
-            case 1:
-                self.user_matrix = [x for x in range(0, rows * columns)]
-            case 2:
-                self.matrix_input_by_console()
+    # # тест "2" - провал 
+    # my_matrix_02 = [6, 5, 4, 3, 2, 1]
+    # my_matrix_transp_02 = matrix_transp(3, 2, my_matrix_02)
+    # print(f'Исходная матрица')
+    # matrix_output(3, 3, my_matrix_02)
+    # print(f'Транспорированная матрица')
+    # matrix_output(f'{my_matrix_transp_02}')
 
-    def matrix_input_by_console(self):
-        '''
-        Метод для ввода матрицы размерности m х n (частный случай m = n)
-        '''
-        self.user_matrix = [0 for x in range(0, self.rows * self.columns)]
-        for i in range(0, self.rows):
-            for j in range(0, self.columns):
-                self.user_matrix[i * self.columns + j] = \
-                    int(input(f'Введите элемент [{i + 1}][{j + 1}] и нажмите enter: '))
+    # # тест "1*" - успешный 
+    # print(matrix_to_string(2, 3, [1, 2, 3, 4, 5, 6]))
 
-    def matrix_output_to_console (self):
-        '''
-            Метод для вывода матрицы размерности m х n (частный случай m = n)
-        '''
-        for i in range(0, self.rows):
-            for j in range(0, self.columns):
-                print(f'{self.user_matrix[i * self.columns + j]} ', end = '')
-            print()
+    # # тест "2*" - провал 
+    # print(matrix_to_string(2, 3, [6, 5, 4, 3, 2, 1]))
+    
+    #################  тестирование !matrix_to_string!    ############
 
-    def matrix_transp(self):
-        '''
-            Метод для транспонирования матрицы размерности m х n (частный случай m = n)
-        '''
-        result = [0.0 for x in range(0, self.rows * self.columns)]
-        
-        for i in range(0, self.rows):
-            for j in range(0, self.columns):
-                result [j * self.rows + i] = self.user_matrix[i * self.columns + j]
-        
-        self.user_matrix = result
-        if self.rows != self.columns:
-            temp = self.rows 
-            self.rows = self.columns
-            self.columns = self.rows
+#   print(matrix_to_string(2, 3, [1, 2, 3, 4, 5, 6]))
 
-    def __add__(self, other):
-        '''
-            Переопределенный дандер метод сложения двух матриц
-        '''
-        # Две марицы можно сложить тогда и только тогда, когда их размерности равны
-        # Здесь пропускаю обработку исключения на случай несовпадения размерности матриц
-
-        # создание пустого экземпляра класса
-        result = UserMatrix(self.rows, self.columns, 0)
-
-        # сложение поэлементное
-        for i in range(0, self.rows):
-            for j in range(0, self.columns):
-                result.user_matrix[i * result.columns + j] = \
-                    self.user_matrix[i * self.columns + j] + \
-                    other.user_matrix[i * other.columns + j]
-                
-        return result
-
-    def __eq__(self, other) -> bool:
-        '''
-            Переопределенный дандер метод сравнения двух матриц
-        '''
-        result = True
-
-        if self.rows != other.rows or self.columns != other.columns:
-            result = False
-        else:
-            for i in range(0, self.rows):
-                for j in range(0, self.columns):
-                    if self.user_matrix[i * self.columns + j] != other.user_matrix[i * other.columns + j]:
-                        result = False
-                        break
-                if not result:
-                    break
-
-        return result
-
-    def __multiply__(self, other):
-        '''
-            Переопределенный дандер метод умножения двух матриц
-        '''
-        # Две марицы можно умножить тогда и только тогда, когда 
-        # количество столбцов первой равно количеству срок второй 
-        # Здесь пропускаю обработку исключения на случай невыполнения условия выше
-
-        # создание пустого экземпляра класса
-        result = UserMatrix(self.rows, other.columns, 0)
-        
-        for i in range(0, self.rows):
-            for j in range(0, other.columns):
-                for k in range(0, self.columns):
-                    result.user_matrix[i * other.columns + j] += \
-                                                    self.user_matrix[i * self.columns + k] * \
-                                                    other.user_matrix[k * other.columns + j]
-                    # интерпретация c[i,j] += a[i,k] * b[k,j], 
-                    # где i = 1:1:m;   
-                    #     j = 1:1:p;  
-                    #     k = 1:1:n;  
-                    # A[mxn] * B[nxp] = C[mxp]
-        return result  
-          
-    def __str__(self):
-        '''
-            Переопределенный дандер метод в преобразования в строку экземпляра класса
-            для дальнейшего вывода (консоль, текстовое поле или файл)
-        '''
-        temp_list_rows_by_str = []
-        for i in range(0, self.rows):
-            temp_list_rows_by_int = []
-            for j in range(0, self.columns):
-                temp_list_rows_by_int.append(self.user_matrix[i * self.columns + j])
-            temp_list_rows_by_str.append(str(temp_list_rows_by_int).strip('[]'))
-            temp_list_rows_by_str.append('\n') 
-        return " ".join(temp_list_rows_by_str)
+#     PS D:\RepoGB\GB_Python_Specialization> ... task_14_testing.py
+#     Trying:
+#         matrix_to_string(2, 3, [1, 2, 3, 4, 5, 6])
+#     Expecting:
+#         '[\n1, 2, 3\n4, 5, 6\n]'
+#     ok
+#     Trying:
+#         matrix_to_string(2, 3, [1, 2, 3, 4, 5, 6])
+#     Expecting:
+#         1, 2, 3, 4, 5, 6
+#     **********************************************************************
+#     File "d:\RepoGB\GB_Python_Specialization\Seminar_14_testing\task_14_testing.py", line 37, in __main__.matrix_to_string
+#     Failed example:
+#         matrix_to_string(2, 3, [1, 2, 3, 4, 5, 6])
+#     Expected:
+#         1, 2, 3, 4, 5, 6
+#     Got:
+#         '[\n1, 2, 3\n4, 5, 6\n]'
+#     1 items had no tests:
+#         __main__
+#     **********************************************************************
+#     1 items had failures:
+#     1 of   2 in __main__.matrix_to_string
+#     2 tests in 2 items.    
+#     1 passed and 1 failed.
 
 
-if __name__ == '__main__':
+  #################  тестирование !matrix_transp!    ############
+#     PS D:\RepoGB\GB_Python_Specialization> ... task_14_testing.py
+    # Trying:
+    #     matrix_transp(2, 3, [1, 2, 3, 4, 5, 6])
+    # Expecting:
+    #     [1, 4, 2, 5, 3, 6]
+    # ok
+    # Trying:
+    #     matrix_transp(2, 3, [6, 5, 4, 3, 2, 1])
+    # Expecting:
+    #     [1, 2, 3, 4, 5, 6]
+    # **********************************************************************
 
-    # Создание экземпляров
-    matrix_01 = UserMatrix(3, 2, 2)   # вводит пользователь
-    matrix_02 = UserMatrix(2, 3, 1)   # вводит пользователь
-    matrix_03 = UserMatrix(3, 3, 0)   # нулевая матрица размерности 3 х 3
-
-    # Умножение
-    matrix_04 = matrix_01.__multiply__(matrix_02)  # результат матрица 3 * 3
-    print()
-    print("matrix_01:")
-    print(matrix_01.__str__())
-    print("matrix_02:")
-    print(matrix_02.__str__())
-    print("Результат умножения матриц: matrix_01 * matrix_02")
-    print(matrix_04.__str__())
-
-    # Сложение
-    matrix_05 = matrix_03 + matrix_04       
-    # matrix_05 = matrix_03.__add__(matrix_04)
-    print("Результат сложения матриц: matrix_03 + matrix_04")
-    print(matrix_05.__str__())    
-    # Сложение
-    matrix_06 = UserMatrix(3, 2, 1)         # вводит пользователь
-    matrix_07 = matrix_06 + matrix_01       
-    # matrix_07 = matrix_06.__add__(matrix_01)
-    print("matrix_06:")
-    print(matrix_06.__str__())
-    print("matrix_01:")
-    print(matrix_01.__str__())
-    print("Результат сложения матриц: matrix_06 + matrix_01")
-    print(matrix_07.__str__())
-
-    # Другой способ вывода
-    print("Результат сложения матриц: matrix_06 + matrix_01")
-    matrix_07.matrix_output_to_console()
-
-    # Сравнение
-    print()
-    print("Результат сравнения матриц: matrix_06 = matrix_01 -> ", end = '')
-    print(f"{matrix_06.__eq__(matrix_01)}\n")
-    print("Результат сравнения матриц: matrix_06 = matrix_01 -> ", end = '')
-    print(f"{matrix_06 == matrix_01}\n")
+    # Failed example:
+    #     matrix_transp(2, 3, [6, 5, 4, 3, 2, 1])
+    # Expected:
+    #     [1, 2, 3, 4, 5, 6]
+    # Got:
+    #     [6, 3, 5, 2, 4, 1]
+    # 3 items had no tests:
+    #     __main__
+    #     __main__.matrix_input
+    #     __main__.matrix_output
+    # **********************************************************************
+    # 1 items had failures:
+    #     1 of   2 in __main__.matrix_transp
+    # 2 tests in 4 items.
+    # 1 passed and 1 failed.
+    # ***Test Failed*** 1 failures.
+    # PS D:\RepoGB\GB_Python_Specialization>
