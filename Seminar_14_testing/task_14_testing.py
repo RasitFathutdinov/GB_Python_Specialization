@@ -21,19 +21,19 @@ import string
 #             print(f'{matrix_to_output[i * n_columns + j]} ', end = '')
 #         print()
 
-# def matrix_transp(m_rows: int, n_columns : int, matrix_gived : list) -> list:
-#     '''
-#     text
-#     >>> matrix_transp(2, 3, [1, 2, 3, 4, 5, 6])
-#     [1, 4, 2, 5, 3, 6]
-#     >>> matrix_transp(2, 3, [6, 5, 4, 3, 2, 1])
-#     [1, 2, 3, 4, 5, 6]
-#     '''
-#     result = [0.0 for x in range(0, m_rows * n_columns)]
-#     for i in range(0, m_rows):
-#         for j in range(0, n_columns):
-#             result [j * m_rows + i] = matrix_gived[i * n_columns + j]
-#     return result
+def matrix_transp(m_rows: int, n_columns : int, matrix_gived : list) -> list:
+    '''
+    text
+    >>> matrix_transp(2, 3, [1, 2, 3, 4, 5, 6])
+    [1, 4, 2, 5, 3, 6]
+    >>> matrix_transp(2, 3, [6, 5, 4, 3, 2, 1])
+    [1, 2, 3, 4, 5, 6]
+    '''
+    result = [0.0 for x in range(0, m_rows * n_columns)]
+    for i in range(0, m_rows):
+        for j in range(0, n_columns):
+            result [j * m_rows + i] = matrix_gived[i * n_columns + j]
+    return result
 
 # def matrix_to_string (m_rows: int, n_columns : int, matrix_to_str : list) -> string:
 #     '''
