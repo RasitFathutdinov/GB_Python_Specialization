@@ -13,7 +13,12 @@ class Rectangle:
         '''Метод инициализации прямоугольника со сторонами a и b.'''
         # Проверка на значение
         if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-            raise TypeError(f'Длина стороны прямоугольника должна быть числом. Используйте int или float. {type(a)}, {type(b)}')
+            raise TypeError('Длина стороны прямоугольника должна быть числом. \n' + 
+                            'Используйте int или float. \n'
+                            + f'a -> {type(a)}, b -> {type(b)}')
+        # raise TypeError('Длина стороны прямоугольника должна быть числом. \n' + 
+        #                     'Используйте int или float. \n'
+        #                     + f'a -> {type(a)}, b -> {type(b)}')
         # Проверка на тип даных
         if a > 0 and b > 0:
             self._a = a
@@ -95,10 +100,19 @@ if __name__ == '__main__':
         
         rect_1.a = 10
         print(rect_1)
-        rect_1.a = 0
+        
+        # для логгирования исключения по несоответсвию значения
+        #rect_1.a = 0
+        
+        # для логгирования исключения по несоответсвию типу данных
+        #rect_1.a = "№"
+        rect_3 =  Rectangle('2', 5)
 
-        #rect_3 =  Rectangle('2', 5)
-
-    except ValueError or TypeError as e:
-        logging.error(f'Возникла ошибка - {e}')
+    except ValueError as err:
+        logging.error(f'Возникла ошибка - {err}')
+    except TypeError as err:
+        logging.error(f'Возникла ошибка - {err}')
+    except Exception as err:
+        print(f"Unexpected {err = }, {type(err) = }")
+        raise
     
